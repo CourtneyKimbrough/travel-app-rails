@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root "pages#index"
+  # Make feed the home page
+  root "feed#index"
 
   devise_for :users
 
