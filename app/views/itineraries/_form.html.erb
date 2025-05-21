@@ -1,42 +1,46 @@
-<%= form_with(model: itinerary) do |form| %>
+<%= form_with(model: itinerary, local: true) do |form| %>
   <% if itinerary.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(itinerary.errors.count, "error") %> prohibited this itinerary from being saved:</h2>
+    <div class="mb-6 p-4 bg-red-100 text-red-700 rounded">
+      <h2 class="font-bold mb-2">
+        <%= pluralize(itinerary.errors.count, "error") %> prohibited this itinerary from being saved:
+      </h2>
 
-      <ul>
-        <% itinerary.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+      <ul class="list-disc list-inside">
+        <% itinerary.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
+  <div class="bg-white max-w-3xl mx-auto p-6 rounded shadow space-y-6">
+    <div>
+      <%= form.label :title, class: "block mb-1 font-semibold text-gray-700" %>
+      <%= form.text_field :title, class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#E43D12]" %>
+    </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.textarea :description %>
-  </div>
+    <div>
+      <%= form.label :description, class: "block mb-1 font-semibold text-gray-700" %>
+      <%= form.text_area :description, rows: 4, class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#E43D12]" %>
+    </div>
 
-  <div>
-    <%= form.label :start_date, style: "display: block" %>
-    <%= form.date_field :start_date %>
-  </div>
+    <div>
+      <%= form.label :start_date, class: "block mb-1 font-semibold text-gray-700" %>
+      <%= form.date_field :start_date, class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#E43D12]" %>
+    </div>
 
-  <div>
-    <%= form.label :end_date, style: "display: block" %>
-    <%= form.date_field :end_date %>
-  </div>
+    <div>
+      <%= form.label :end_date, class: "block mb-1 font-semibold text-gray-700" %>
+      <%= form.date_field :end_date, class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#E43D12]" %>
+    </div>
 
-  <div>
-    <%= form.label :user_name, style: "display: block" %>
-    <%= form.text_field :user_name %>
-  </div>
+    <div>
+      <%= form.label :user_name, class: "block mb-1 font-semibold text-gray-700" %>
+      <%= form.text_field :user_name, class: "w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#E43D12]" %>
+    </div>
 
-  <div>
-    <%= form.submit %>
+    <div>
+      <%= form.submit "Save Itinerary", class: "bg-[#E43D12] text-[#EBE9E1] font-bold rounded py-2 px-4 hover:bg-[#c7360f] transition duration-300" %>
+    </div>
   </div>
 <% end %>
